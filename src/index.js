@@ -58,6 +58,5 @@ module.exports = {
     eris = new Eris.Client(config.botToken.get())
     eris.connect()
     incoming(bp, eris)
-
   }
 }
