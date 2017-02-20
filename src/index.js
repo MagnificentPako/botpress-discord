@@ -52,6 +52,8 @@ module.exports = {
         return promise
       })
     })
+    bp.discord.isSelf = (id) => id === eris.user.id
+    bp.discord.isPrivate = (msg) => msg.channel.guild === undefined
   },
   ready: function(bp) {
     const config = createConfig(bp)
