@@ -1,6 +1,6 @@
 {
   "name": "botpress-discord",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "A Botpress module using Eris to interact with Discord.",
   "main": "bin/node.bundle.js",
   "repository": {
@@ -11,6 +11,16 @@
     "menuText": "botpress-discord",
     "menuIcon": "view_module",
     "webBundle": "bin/web.bundle.js"
+  },
+  "keywords": [
+    "discord",
+    "botpress"
+  ],
+  "version-manager": {
+    "warn": "",
+    "botpress-check": ">= 0.1 < 1",
+    "botpress-update": "^0.x",
+    "module-downgrade": "~1.0.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -45,6 +55,7 @@
     "webpack": "^1.13.3"
   },
   "dependencies": {
+    "botpress-version-manager": "^1.0.2",
     "eris": "^0.5.2",
     "request": "^2.79.0",
     "request-promise": "^4.1.1"
