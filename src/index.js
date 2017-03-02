@@ -1,3 +1,5 @@
+const checkVersion = require('botpress-version-manager')
+
 const Eris = require("eris")
 const outgoing = require("./outgoing")
 const incoming = require("./incoming")
@@ -23,6 +25,8 @@ const outgoingMiddleware = (event, next) => {
 
 module.exports = {
   init: function(bp) {
+
+    checkVersion(bp, __dirname)
 
     bp.middlewares.register({
       name: "discord.sendMessages",
