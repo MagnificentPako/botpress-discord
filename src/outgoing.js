@@ -50,7 +50,8 @@ const handleImage = (event, next, discord) => {
   }
   const channelId = event.raw.channelId
   const uri = event.raw.uri
-  const filename = Date.now() + ".png"
+  const filetype = event.raw.type || "png"
+  const filename = Date.now() + "." + filetype
 
   var pr = new Promise( (resolve, reject) => {
     rp({uri: uri,encoding: null})

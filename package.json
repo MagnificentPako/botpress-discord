@@ -1,6 +1,6 @@
 {
   "name": "botpress-discord",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A Botpress module using Eris to interact with Discord.",
   "main": "bin/node.bundle.js",
   "repository": {

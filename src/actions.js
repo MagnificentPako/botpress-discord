@@ -27,14 +27,15 @@ const createAttachment = (chId, description, uri) => {
   }
 }
 
-const createImage = (chId, uri) => {
+const createImage = (chId, uri, filetype) => {
   return {
     platform: "discord",
     type: "image",
     text: "",
     raw: {
       uri: uri,
-      channelId: chId
+      channelId: chId,
+      type: filetype || "png"
     }
   }
 }
