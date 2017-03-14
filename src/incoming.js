@@ -2,7 +2,7 @@ import outgoing from "./outgoing"
 
 module.exports = (bp, discord, config) => {
   discord.on("messageCreate", msg => {
-    if(config.useSelf.get()) {
+    if(config.useSelf.get() === true) {
       if(bp.discord.isSelf(msg.author.id)) {
         bp.middlewares.sendIncoming({
           platform: "discord",
