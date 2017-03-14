@@ -42,7 +42,7 @@ module.exports = {
     _.forIn(actions, (action,name) => {
       bp.discord[name] = action
       var sendName = name.replace(/^create/, "send")
-      console.log("Created action " + sendName)
+      //console.log("Created action " + sendName)
       bp.discord[sendName] = Promise.method(function() {
         var msg = action.apply(this,arguments)
         msg.__id = new Date().toISOString() + Math.random()
@@ -63,6 +63,6 @@ module.exports = {
     const config = createConfig(bp)
     eris = new Eris.Client(config.botToken.get())
     eris.connect()
-    incoming(bp, eris)
+    incoming(bp, eris, config)
   }
 }

@@ -3,11 +3,13 @@ import createStorage from "./storage"
 
 export default bp => {
   const configKeys = [
-    "botToken"
+    "botToken",
+    "useSelf"
   ]
 
   const configDefaults = {
-    botToken: null
+    botToken: null,
+    useSelf: false
   }
 
   const configStorage = createStorage(bp, configDefaults)
