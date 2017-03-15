@@ -72,9 +72,9 @@ const handleTextUpdate = (event, next, discord) => {
     return next()
   }
 
-  const channelId = event.channelId
-  const msgId = event.msgId
-  const text = event.text
+  const channelId = event.raw.channelId
+  const msgId = event.raw.msgId
+  const text = event.raw.content
   const raw = (typeof event.raw !== "string") ? event.raw : {}
 
   return handlePromise(next, discord.editMessage(channelId, msgId, text))

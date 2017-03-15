@@ -45,9 +45,11 @@ const createTextUpdate = (chId, msgId, content) => {
     platform: "discord",
     type: "textUpdate",
     text: (typeof content === "string") ? content : content.content,
-    channelId: chId,
-    msgId: msgId,
-    raw: content
+    raw: {
+      channelId: chId,
+      msgId: msgId,
+      msg: content
+    }
   }
 }
 
