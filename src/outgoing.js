@@ -68,7 +68,7 @@ const handleImage = (event, next, discord) => {
 }
 
 const handleTextUpdate = (event, next, discord) => {
-  if(event.platform !== "discord" || event.type !== "text") {
+  if(event.platform !== "discord" || event.type !== "textUpdate") {
     return next()
   }
 
