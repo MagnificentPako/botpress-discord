@@ -18,8 +18,9 @@ const handleText = (event, next, discord) => {
 
   const channelId = event.raw.channelId
   const text = event.text
+  const raw = (typeof event.raw !== "string") ? event.raw : {}
 
-  return handlePromise(next, discord.createMessage(channelId, text))
+  return handlePromise(next, discord.createMessage(channelId, {"content": text, "embed": raw}))
 }
 
 const handleAttachment = (event, next, discord) => {
@@ -66,9 +67,24 @@ const handleImage = (event, next, discord) => {
 
 }
 
+const handleTextUpdate = (event, next, discord) => {
+  if(event.platform !== "discord" || event.type !== "text") {
+    return next()
+  }
+
+  const channelId = event.channelId
+  const msgId = event.msgId
+  const text = event.text
+  const raw = (typeof event.raw !== "string") ? event.raw : {}
+
+  return handlePromise(next, discord.editMessage(channelId, msgId, text))
+
+}
+
 module.exports = {
   "text": handleText,
   "attachment": handleAttachment,
   "image": handleImage,
+  "textUpdate": handleTextUpdate,
   pending: {}
 }

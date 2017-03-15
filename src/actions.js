@@ -5,7 +5,7 @@ const createText = (chId, txt) => {
   return {
     platform: "discord",
     type: "text",
-    text: txt,
+    text: (typeof txt === "string") ? txt : "",
     raw: {
       channelId: chId,
       message: txt
@@ -40,8 +40,20 @@ const createImage = (chId, uri, filetype) => {
   }
 }
 
+const createTextUpdate = (chId, msgId, content) => {
+  return {
+    platform: "discord",
+    type: "textUpdate",
+    text: (typeof content === "string") ? content : content.content,
+    channelId: chId,
+    msgId: msgId,
+    raw: content
+  }
+}
+
 module.exports = {
   createText,
   createAttachment,
-  createImage
+  createImage,
+  createTextUpdate
 }
