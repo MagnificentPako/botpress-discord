@@ -62,6 +62,7 @@ module.exports = {
   ready: function(bp) {
     const config = createConfig(bp)
     eris = new Eris.Client(config.botToken.get())
+    bp.discord.raw = eris
     eris.connect()
     incoming(bp, eris, config)
   }
