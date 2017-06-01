@@ -68,7 +68,7 @@ An `event` is sent to middlewares for each incoming text message from Discord.
 bp.discord.sendText(channelId, text)
 ```
 
-###### You can also pass extra params to this method (check out (Eris)[https://github.com/abalabahaha/eris] documentation):
+###### You can also pass extra params to this method (check out [Eris](https://github.com/abalabahaha/eris) documentation):
 
 ```js
 bp.discord.sendText( event.channel.id, "Welcome!", { 'embed': {
