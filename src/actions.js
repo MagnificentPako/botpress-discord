@@ -1,15 +1,18 @@
 const embeds = require("./embeds")
 import _ from "lodash"
 
-const createText = (chId, txt) => {
+const createText = (chId, txt, extra = {}) => {
+
+  let raw = Object.assign({
+    channelId: chId,
+    message: txt.trim()
+  }, extra);
+
   return {
     platform: "discord",
     type: "text",
     text: (typeof txt === "string") ? txt : "",
-    raw: {
-      channelId: chId,
-      message: txt
-    }
+    raw: raw
   }
 }
 
