@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "botpress-version-manager": "^1.0.2",
-    "eris": "^0.5.2",
+    "eris": "^0.7.x",
     "request": "^2.79.0",
     "request-promise": "^4.1.1"
   }
