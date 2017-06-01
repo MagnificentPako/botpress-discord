@@ -43,8 +43,8 @@ The config is located at _modules_config/botpress-discord.json_. Insert the toke
 
 You can listen to incoming events easily with Botpress by using the built-in "hear" function.
 ```js
-bp.hear({platform: "discord", type: "text", text: /^hello/i}, event => {
-  bp.discord.sendText(event.channel.id, "Welcome!")
+bp.hear({platform: "discord", type: "message", text: /^hello/i}, event => {
+	bp.discord.sendText(event.channel.id, "Welcome!")
 })
 ```
 
@@ -65,7 +65,7 @@ An `event` is sent to middlewares for each incoming text message from Discord.
 
 #### Text messages
 ```js
-bp.discord.sendMessage(channelId, text)
+bp.discord.sendText(channelId, text)
 ```
 
 #### Attachments
