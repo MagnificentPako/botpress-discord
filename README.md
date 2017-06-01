@@ -42,10 +42,36 @@ The config is located at _modules_config/botpress-discord.json_. Insert the toke
 ### Incoming
 
 You can listen to incoming events easily with Botpress by using the built-in "hear" function.
+
+##### Ready
+```js
+bp.hear({platform: "discord", type: "ready"}, (event) => {
+	let client = event.discord;
+})
+```
+
+##### Messages
 ```js
 bp.hear({platform: "discord", type: "message", text: /^hello/i}, event => {
 	bp.discord.sendText(event.channel.id, "Welcome!")
 })
+```
+
+##### User status update
+```js
+bp.hear({platform: "discord", type: "status"}, (event) => {
+	let user = event.user,
+		status = event.status,
+		game = event.game;
+});
+```
+
+##### User typing
+```js
+bp.hear({platform: "discord", type: "typing"}, (event) => {
+	let user = event.user,
+		channelID = event.channelID;
+});
 ```
 
 #### Text messages

@@ -27,7 +27,38 @@ module.exports = (bp, discord, config) => {
     }
 
   })
+
   discord.on("ready", () => {
-    console.log("Discord ready")
+    bp.middlewares.sendIncoming({
+      platform: "discord",
+      type: "ready",
+      user: "",
+      text: "",
+      discord: discord,
+      raw: discord
+    })
+  })
+
+  discord.on("typingStart", (event, user) => {
+    bp.middlewares.sendIncoming({
+      platform: "discord",
+      type: "typing",
+      user: user,
+      channelID: event.id,
+      text: "",
+      raw:  {"event": event, "user": user}
+    })
+  })
+
+  discord.on("presenceUpdate", (event) => {
+    bp.middlewares.sendIncoming({
+      platform: "discord",
+      type: "status",
+      user: event.user,
+      text: "",
+      status: event.status,
+      game: event.game ? event.game : {type: false, name: false},
+      raw:  event
+    })
   })
 }
