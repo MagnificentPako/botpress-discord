@@ -42,10 +42,36 @@ The config is located at _modules_config/botpress-discord.json_. Insert the toke
 ### Incoming
 
 You can listen to incoming events easily with Botpress by using the built-in "hear" function.
+
+##### Ready
 ```js
-bp.hear({platform: "discord", type: "text", text: /^hello/i}, event => {
-  bp.discord.sendText(event.channel.id, "Welcome!")
+bp.hear({platform: "discord", type: "ready"}, (event) => {
+	let client = event.discord;
 })
+```
+
+##### Messages
+```js
+bp.hear({platform: "discord", type: "message", text: /^hello/i}, event => {
+	bp.discord.sendText(event.channel.id, "Welcome!")
+})
+```
+
+##### User status update
+```js
+bp.hear({platform: "discord", type: "status"}, (event) => {
+	let user = event.user,
+		status = event.status,
+		game = event.game;
+});
+```
+
+##### User typing
+```js
+bp.hear({platform: "discord", type: "typing"}, (event) => {
+	let user = event.user,
+		channelID = event.channelID;
+});
 ```
 
 #### Text messages
@@ -65,7 +91,16 @@ An `event` is sent to middlewares for each incoming text message from Discord.
 
 #### Text messages
 ```js
-bp.discord.sendMessage(channelId, text)
+bp.discord.sendText(channelId, text)
+```
+
+###### You can also pass extra params to this method (check out [Eris](https://github.com/abalabahaha/eris) documentation):
+
+```js
+bp.discord.sendText( event.channel.id, "Welcome!", { 'embed': {
+	title: "I'm an embed!",
+	description: "Here is some more info, with **awesome** formatting.\nPretty *neat*, huh?",
+}});
 ```
 
 #### Attachments

@@ -18,9 +18,10 @@ const handleText = (event, next, discord) => {
 
   const channelId = event.raw.channelId
   const text = event.text
-  const raw = (typeof event.raw !== "string") ? event.raw : {}
+  const raw = (typeof event.raw !== "string") ? event.raw : {};
+  const embed = event.raw.embed ? event.raw.embed : false;
 
-  return handlePromise(next, discord.createMessage(channelId, {"content": text, "embed": raw}))
+  return handlePromise(next, discord.createMessage(channelId, {"content": text, "embed": embed}))
 }
 
 const handleAttachment = (event, next, discord) => {
